@@ -1,0 +1,133 @@
+/* KeyX 官网共用样式：纯色底 + 玻璃卡，与 App 一致；深色模式跟随系统 */
+
+:root {
+  --bg: #F1EEF9;
+  --ink: #1C1C28;
+  --ink-2: rgba(28, 28, 40, .68);
+  --ink-3: rgba(28, 28, 40, .52);
+  --glass: rgba(255, 255, 255, .58);
+  --glass-strong: rgba(255, 255, 255, .86);
+  --stroke: rgba(255, 255, 255, .75);
+  --rule: rgba(28, 28, 40, .10);
+  --indigo: #5457E8;
+  --indigo-ink: #3E41C9;
+  --indigo-chip: rgba(84, 87, 232, .13);
+  --gold: #A8730E;
+  --gold-chip: rgba(201, 138, 18, .15);
+  --red: #C93F37;
+  --red-chip: rgba(214, 71, 63, .13);
+  --blue: #2F6BE0;
+  --blue-chip: rgba(47, 107, 224, .13);
+  --violet: #7C4FE0;
+  --violet-chip: rgba(139, 92, 246, .13);
+  --shadow: 0 18px 40px rgba(40, 36, 90, .10);
+  --on-indigo: #FFFFFF;
+  --serif: "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0E0C15;
+    --ink: #F4F4FA;
+    --ink-2: rgba(255, 255, 255, .70);
+    --ink-3: rgba(255, 255, 255, .54);
+    --glass: rgba(255, 255, 255, .05);
+    --glass-strong: rgba(28, 26, 40, .92);
+    --stroke: rgba(255, 255, 255, .12);
+    --rule: rgba(255, 255, 255, .10);
+    --indigo: #B4B6FF;
+    --indigo-ink: #CFD0FF;
+    --indigo-chip: rgba(180, 182, 255, .20);
+    --gold: #F2C77A;
+    --gold-chip: rgba(242, 199, 122, .20);
+    --red: #FF9E97;
+    --red-chip: rgba(255, 158, 151, .20);
+    --blue: #9DC0FF;
+    --blue-chip: rgba(157, 192, 255, .20);
+    --violet: #CDB4FF;
+    --violet-chip: rgba(205, 180, 255, .20);
+    --shadow: 0 18px 40px rgba(0, 0, 0, .45);
+    --on-indigo: #14132A;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 中英文切换：只显示当前语言 */
+html[data-lang="zh"] [lang="en"] { display: none !important; }
+html[data-lang="en"] [lang="zh-Hans"] { display: none !important; }
+
+a { color: var(--indigo-ink); text-underline-offset: 3px; }
+a:hover { color: var(--indigo); }
+
+:focus-visible { outline: 2.5px solid var(--indigo); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 700; margin: 0; letter-spacing: -0.01em; }
+
+/* ---------- 顶栏 ---------- */
+
+.site-header { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: saturate(160%) blur(16px); -webkit-backdrop-filter: saturate(160%) blur(16px); border-bottom: 1px solid var(--rule); }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font-weight: 650; font-size: 18px; letter-spacing: .3px; }
+.brand-mark { width: 32px; height: 32px; display: block; }
+.nav { display: flex; align-items: center; gap: 22px; font-size: 15px; }
+.nav a { color: var(--ink-2); text-decoration: none; }
+.nav a:hover { color: var(--ink); }
+.lang-toggle { font: inherit; font-size: 14px; font-weight: 600; color: var(--ink); background: var(--glass); border: 1px solid var(--stroke); border-radius: 999px; padding: 0 14px; height: 36px; cursor: pointer; }
+.lang-toggle:hover { background: var(--glass-strong); }
+
+@media (max-width: 640px) {
+  .nav .nav-link { display: none; }
+}
+
+/* ---------- 按钮 ---------- */
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 52px; padding: 0 24px; border-radius: 16px; font: inherit; font-size: 16px; font-weight: 650; text-decoration: none; border: none; }
+.btn-primary { background: var(--indigo); color: var(--on-indigo); box-shadow: 0 10px 24px rgba(84, 87, 232, .30); }
+.btn-primary:hover { color: var(--on-indigo); filter: brightness(1.06); }
+.btn-primary[aria-disabled="true"] { cursor: default; filter: none; }
+.btn-quiet { color: var(--ink); background: var(--glass); border: 1px solid var(--stroke); }
+.btn-quiet:hover { color: var(--ink); background: var(--glass-strong); }
+
+/* ---------- 页脚 ---------- */
+
+.site-footer { border-top: 1px solid var(--rule); padding: 36px 0 48px; font-size: 14px; color: var(--ink-3); }
+.site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+.site-footer nav { display: flex; gap: 20px; }
+.site-footer a { color: var(--ink-2); text-decoration: none; }
+.site-footer a:hover { color: var(--ink); text-decoration: underline; }
+
+/* ---------- 图标 chip（与 App 一致） ---------- */
+
+.chip { flex: none; width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; }
+.chip svg { width: 22px; height: 22px; }
+.chip.indigo { background: var(--indigo-chip); color: var(--indigo); }
+.chip.gold { background: var(--gold-chip); color: var(--gold); }
+.chip.red { background: var(--red-chip); color: var(--red); }
+.chip.blue { background: var(--blue-chip); color: var(--blue); }
+.chip.violet { background: var(--violet-chip); color: var(--violet); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* 深色模式下 App 图标本身也是深色：加一圈淡淡的描边，和背景区分开 */
+@media (prefers-color-scheme: dark) {
+  .brand-mark, .hero-icon { border-radius: 22.5%; box-shadow: 0 0 0 1px rgba(255, 255, 255, .16); }
+}
